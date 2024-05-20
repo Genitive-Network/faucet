@@ -1,10 +1,8 @@
-import Redis from "ioredis";
+import { Redis } from '@upstash/redis'
 
-/*
- * connect to the redis server
- * Redis is a key-value store that is used to store data in memory.
- * Key value will be address => timestamp of last faucet request
- */
-const redis = new Redis(process.env.REDIS_URI as string);
+const redis = new Redis({
+  url: 'https://romantic-hornet-44884.upstash.io',
+  token: process.env.UPSTASH_TOKEN as string,
+})
 
-export default redis;
+export default redis

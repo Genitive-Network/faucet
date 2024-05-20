@@ -1,14 +1,14 @@
-# Faucet EVM Template
+# Genitive Faucet
 
-<i> Testnet faucet template using Nextjs, Tailwind, hCaptcha and Redis </i>
+<i> Genitive Testnet faucet fork from 0xDeploy/faucet-evm-template. Using Nextjs, Tailwind, hCaptcha and Redis </i>
 
 ## One click deploy
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F0xDeploy%2Ffaucet-evm-template)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FGenitive-Network%2Ffaucet)
 
 ## Demo
 
-https://0xdeploy-faucet-demo.vercel.app/
+https://genitive-faucet.vercel.app/
 
 ## Video Tutorial
 
@@ -20,15 +20,17 @@ https://youtu.be/PcFfN_jrc_w
 
 ```
 PRIVATE_KEY=0000000000000000000000000000000000000000000000000000000000000000
-RPC_URL=https://rpc.ankr.com/eth_goerli
+
 COOLDOWN_HOURS=2
-VALUE=1230000000000000
+VALUE=12300000000000000
+
+# https://www.hcaptcha.com/
 NEXT_PUBLIC_HCAPTCHA_SITE_KEY=00000000-0000-0000-0000-000000000000
 HCAPTCHA_SECRET=0x0000000000000000000000000000000000000000
-REDIS_URI=redis://default:key@url.com:6379
-```
 
-![](https://user-images.githubusercontent.com/19412160/212416161-e334625f-1a9c-41e2-9c4b-4c878545f45d.png)
+REDIS_URI=redis://default:supersecretKey@redis-address.ec2.cloud.redislabs.com:16284
+UPSTASH_TOKEN=supersecretKey
+```
 
 ## Definitions
 
@@ -44,12 +46,20 @@ NEXT_PUBLIC_HCAPTCHA_SITE_KEY: Create hCaptcha account. Also known as `Sitekey` 
 
 HCAPTCHA_SECRET: Create hCpatcha account. Also known as `Secret Key` https://dashboard.hcaptcha.com/settings
 
-REDIS_URI: Redis is an in-memory key-value database. https://redis.com/redis-enterprise-cloud/overview/
-
+REDIS_URI: upstash Redis URI
+UPSTASH_TOKEN: upstash
 
 ## Getting Started Locally
 
-First, run the development server:
+First, add a host record to your host file:
+
+```
+127.0.0.1	faucet.local
+```
+
+This is not necessary if you don't use hCaptcha.
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -66,4 +76,3 @@ cp .env.local.example .env.local
 Modern browsers have strict CORS and CORB rules, so opening a file://URI that loads hCaptcha will not work
 
 The simplest way to use a tool such as [ngrok](https://ngrok.com/)
-

@@ -6,13 +6,13 @@ import ErrorModal from "./ErrorModal";
 
 export default function Faucet() {
   const [isDisabled, setIsDisabled] = useState(true);
-  const [hcaptchaToken, setHcaptchaToken] = useState("");
+  const [hCaptchaToken, setHCaptchaToken] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleVerificationSuccess = async (token: string, ekey: string) => {
-    // set hcaptcha token
-    setHcaptchaToken(token);
+    // set hCaptcha token
+    setHCaptchaToken(token);
     // enable submit button
     setIsDisabled(false);
   };
@@ -24,7 +24,7 @@ export default function Faucet() {
     // send request to faucet
     const response = await fetch("/api/faucet", {
       method: "POST",
-      body: JSON.stringify({ address: event.currentTarget.address.value, hcaptchaToken }),
+      body: JSON.stringify({ address: event.currentTarget.address.value, hCaptchaToken }),
     });
     // parse response
     const data = await response.json();
@@ -39,10 +39,10 @@ export default function Faucet() {
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
-            <img className="mx-auto h-12 w-auto" src="logo.png" alt="Testnet Faucet" />
-            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Testnet Faucet</h2>
+            <img className="mx-auto h-12 w-auto" src="logo.svg" alt="Testnet Faucet" />
+            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Genitive Faucet</h2>
             <p className="mt-2 text-center text-sm text-gray-600">
-              <a href="https://github.com/orgs/0xDeploy/repositories" target="_blank" rel="noreferrer" className="font-medium text-indigo-600 hover:text-indigo-500">
+              <a href="https://github.com/Genitive-Network/faucet" target="_blank" rel="noreferrer" className="font-medium text-indigo-600 hover:text-indigo-500">
                 Open Source
               </a>
             </p>
